@@ -11,11 +11,11 @@
                 [
                     {
                         "caption": "Sql Replace",
-                        "command": "Sql Replace"
+                        "command": "sql_replace"
                     },
                     {
                         "caption": "Sql Replace Reverse",
-                        "command": "Sql Replace Reverse"
+                        "command": "sql_replace_reverse"
                     }
                 ]
             }
