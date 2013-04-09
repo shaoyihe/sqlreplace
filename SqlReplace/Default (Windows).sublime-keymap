@@ -1,0 +1,4 @@
+[
+	{ "keys": ["ctrl+alt+i"], "command": "sql_replace_reverse" },
+	{ "keys": ["ctrl+alt+u"], "command": "sql_replace" }
+]
