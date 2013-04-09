@@ -8,6 +8,7 @@ class SqlReplaceCommand(sublime_plugin.TextCommand):
 		sql前面 加""+ 方便放在代码中
 	"""
 	def replace_(self,content):
+		# tet=max(map(lambda line : len(line), content.split("\n")))
 		result=""
 		com_=re.compile("^(.+)$",re.M)
 		for cur in com_.finditer(content):
@@ -15,12 +16,14 @@ class SqlReplaceCommand(sublime_plugin.TextCommand):
 		return result[:-2]+";"
 	def run(self, edit):
 		execute(self,edit)
+		# self.view.insert(edit, 0, self.view.settings().get('syntax'))
 		
 class SqlReplaceReverseCommand(sublime_plugin.TextCommand):
 	"""
 		对上面操作取反
 	"""
 	def replace_(self,content):
+		# tet=max(map(lambda line : len(line), content.split("\n")))
 		result=""
 		com_=re.compile(r'(^ *")*(.+)(\\n *?"[ ;+]*)+?$',re.M)
 		for cur in com_.finditer(content):
