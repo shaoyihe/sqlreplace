@@ -19,22 +19,15 @@ class SqlReplaceCommand(SqlReplaceBase):
 		sql前面 加""+ 方便放在代码中
 	"""
 	def replace_(self,content):
-		result=""
-		com_=re.compile("^(.+)$",re.M)
-		for cur in com_.finditer(content):
-			result+='" '+cur.group(1)+' \\n"+\n'
-		return result[:-2]+";"
+		return "\n".join(map(lambda line: '" '+line+' "+' ,content.split("\n")))[:-1]+";"
 	
 
 class SqlReplaceReverseCommand(SqlReplaceBase):
 	"""
-		对上面操作取反
+		对上面操作取反 
 	"""
 	def replace_(self,content):
-		result=""
-		com_=re.compile(r'(^ *")*(.+)(\\n *?"[ ;+]*)+?$',re.M)
-		for cur in com_.finditer(content):
-			result+=cur.group(2)+"\n"
-		return result
+		return "\n".join(map(
+			lambda line: re.sub(r'(^[ \t]*?"|([\\n "+]*[ \t]*$))','',line) ,content.split("\n")))
 
 
