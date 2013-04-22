@@ -19,7 +19,7 @@ class SqlReplaceCommand(SqlReplaceBase):
 		sql前面 加""+ 方便放在代码中
 	"""
 	def replace_(self,content):
-		return "\n".join(map(lambda line: '" '+line+' "+' ,content.split("\n")))[:-1]+";"
+		return "\n".join(map(lambda line: '" '+line+' \\n"+' ,content.split("\n")))[:-1]+";"
 	
 
 class SqlReplaceReverseCommand(SqlReplaceBase):
@@ -28,6 +28,6 @@ class SqlReplaceReverseCommand(SqlReplaceBase):
 	"""
 	def replace_(self,content):
 		return "\n".join(map(
-			lambda line: re.sub(r'(^[ \t]*?"|([\\n "+]*[ \t]*$))','',line) ,content.split("\n")))
+			lambda line: re.sub(r'(^[ \t]*?"|([\\n "+;]*[ \t]*$))','',line) ,content.split("\n")))
 
 
